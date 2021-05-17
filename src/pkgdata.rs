@@ -9,7 +9,7 @@ use serde::Serialize;
 
 /// Representation of the key `pkgver` in a PKGBUILD
 #[derive(Debug, Serialize, Eq, Clone)]
-pub struct Pkgver(String);
+pub struct Pkgver(pub String);
 
 impl Pkgver {
     /// Validate and create a new `Pkgver` instance
@@ -58,7 +58,7 @@ impl PartialEq<&str> for Pkgver {
 
 /// Representation of a `pkgname` value in a PKGBUILD
 #[derive(Debug, Serialize, Eq, Clone)]
-pub struct Pkgname(String);
+pub struct Pkgname(pub String);
 
 impl Pkgname {
     /// Validate and create a new `Pkgname` instance
@@ -130,7 +130,7 @@ impl PartialEq<&str> for Pkgname {
 
 /// Representation of a `pkgbase` value in a PKGBUILD
 #[derive(Debug, Serialize, Eq, Clone)]
-pub struct Pkgbase(String);
+pub struct Pkgbase(pub String);
 
 impl Pkgbase {
     /// Validate and create a new `Pkgbase` instance
