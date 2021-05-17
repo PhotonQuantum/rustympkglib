@@ -8,7 +8,7 @@ extern crate serde;
 use serde::Serialize;
 
 /// Representation of the key `pkgver` in a PKGBUILD
-#[derive(Debug, Serialize, Eq)]
+#[derive(Debug, Serialize, Eq, Clone)]
 pub struct Pkgver(String);
 
 impl Pkgver {
@@ -57,7 +57,7 @@ impl PartialEq<&str> for Pkgver {
 }
 
 /// Representation of a `pkgname` value in a PKGBUILD
-#[derive(Debug, Serialize, Eq)]
+#[derive(Debug, Serialize, Eq, Clone)]
 pub struct Pkgname(String);
 
 impl Pkgname {
@@ -129,7 +129,7 @@ impl PartialEq<&str> for Pkgname {
 }
 
 /// Representation of a `pkgbase` value in a PKGBUILD
-#[derive(Debug, Serialize, Eq)]
+#[derive(Debug, Serialize, Eq, Clone)]
 pub struct Pkgbase(String);
 
 impl Pkgbase {
@@ -204,7 +204,7 @@ enum State<'a> {
 /// [Pkgname]: struct.Pkgname.html
 /// [Pkgver]: struct.Pkgver.html
 /// [Pkgbase]: struct.Pkgbase.html
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Eq, PartialEq, Clone)]
 pub struct PkgData {
     pub pkgbase: Option<Pkgbase>,
     pub pkgname: Vec<Pkgname>,

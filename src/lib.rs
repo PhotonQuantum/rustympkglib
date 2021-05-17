@@ -4,6 +4,7 @@
 //! This crate so far can only parse certain key variables and arrays in a PKGBUILD file. In the
 //! near future it will also be able to edit those key variables and write it back into the
 //! PKGBUILD.
+use std::error::Error as StdError;
 use std::fmt;
 
 mod helpers;
@@ -53,3 +54,5 @@ impl fmt::Display for Error {
         write!(f, "{}: {}", self.kind, self.msg)
     }
 }
+
+impl StdError for Error {}
