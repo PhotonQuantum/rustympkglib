@@ -5,10 +5,11 @@ use crate::{Error, ErrorKind};
 
 extern crate serde;
 
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
+use serde_with::skip_serializing_none;
 
 /// Representation of the key `pkgver` in a PKGBUILD
-#[derive(Debug, Serialize, Eq, Clone)]
+#[derive(Debug, Serialize, Deserialize, Eq, Clone)]
 pub struct Pkgver(pub String);
 
 impl Pkgver {
@@ -57,7 +58,7 @@ impl PartialEq<&str> for Pkgver {
 }
 
 /// Representation of a `pkgname` value in a PKGBUILD
-#[derive(Debug, Serialize, Eq, Clone)]
+#[derive(Debug, Serialize, Deserialize, Eq, Clone)]
 pub struct Pkgname(pub String);
 
 impl Pkgname {
@@ -129,7 +130,7 @@ impl PartialEq<&str> for Pkgname {
 }
 
 /// Representation of a `pkgbase` value in a PKGBUILD
-#[derive(Debug, Serialize, Eq, Clone)]
+#[derive(Debug, Serialize, Deserialize, Eq, Clone)]
 pub struct Pkgbase(pub String);
 
 impl Pkgbase {
@@ -204,7 +205,8 @@ enum State<'a> {
 /// [Pkgname]: struct.Pkgname.html
 /// [Pkgver]: struct.Pkgver.html
 /// [Pkgbase]: struct.Pkgbase.html
-#[derive(Debug, Serialize, Eq, PartialEq, Clone)]
+#[skip_serializing_none]
+#[derive(Debug, Serialize, Deserialize, Eq, PartialEq, Clone)]
 pub struct PkgData {
     pub pkgbase: Option<Pkgbase>,
     pub pkgname: Vec<Pkgname>,
