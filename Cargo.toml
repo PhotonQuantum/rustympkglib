@@ -14,4 +14,4 @@ categories = ["parser-implementations"]
 tree-sitter = "0.19"
 tree-sitter-bash = "0.19"
 serde = { version = "1.0", features = ["derive"] }
-serde_with = "1.9"
+serde_with = "2.0"
